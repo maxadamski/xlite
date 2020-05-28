@@ -1,0 +1,17 @@
+start : (_NL | elem)*
+elem : _head TEXT? (body | _NL)
+_head : _LANG ATOM attr* _RANG
+line : TEXT _NL
+body : elem | _NL _IND (elem | line)+ _DED
+attr : ATOM ["=" STRING]
+
+_LANG: "<"
+_RANG: ">"
+TEXT: /[^<\r\n]+/
+ATOM: /[A-Za-z!:_-][A-Za-z0-9!:_-]*/
+_NL: /(\r?\n[\t ]*)+/
+_WS: /[ \t\n\r]+/
+
+%ignore /[ \t\f]+/
+%import common.ESCAPED_STRING -> STRING
+%declare _IND _DED

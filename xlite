@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+
+import argparse
+from sys import stdin, stderr
+from os.path import dirname, exists
+
+from xlite import parse, emit, presets
+
+def parse_args():
+    parser = argparse.ArgumentParser(prog='xlite', description='The xlite language compiler')
+    parser.add_argument('input', metavar='FILE', default=None, help='input source file')
+    parser.add_argument('-t', '--type', dest='type', default='xml', help='output type (xml | html5)')
+    parser.add_argument('-o', '--output', dest='output', default=None, help='output file')
+    args = parser.parse_args()
+    if args.type not in presets:
+        print(f'error: unknown output format preset `{args.type}`', file=stderr)
+        exit(1)
+    if args.input and not exists(args.input) and args.input != '-':
+        print(f'error: no such file `{args.input}`', file=stderr)
+        exit(1)
+    if args.output and not exists(dirname(args.output)) and args.output != '-':
+        print(f'error: no such directory `{dirname(args.output)}`', file=stderr)
+        exit(1)
+    return args
+
+if __name__ == '__main__':
+    args = parse_args()
+
+    input_text = None
+    if not args.input or args.input == '-':
+        input_text = stdin.read()
+    else:
+        f = open(args.input, 'r')
+        input_text = f.read()
+        f.close()
+
+    syntax_tree = parse(input_text)
+    output_text = emit(syntax_tree, preset=args.type)
+
+    if not args.output or args.output == '-':
+        print(output_text)
+    else:
+        f = open(args.output, 'w')
+        f.write(output_text)
+        f.close()
