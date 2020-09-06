@@ -1,5 +1,4 @@
-
-![Xlite logo](/assets/logo.png?raw=true)
+<img src="/assets/logo.png?raw=true" align="right" height=40>
 
 # Xlite
 
@@ -29,12 +28,12 @@ Nothing new to learn, just write and edit XML and HTML quicker, even with a simp
 - [ ] More whitespace control (maybe via xml:space preserve)
 - [ ] Complete XML feature support (CDATA, !ELEMENT, ...)
 - [ ] Editor support (right now kind of works in vscode as XML)
+- [ ] Support both tabs and spaces in indentation
 
 **Non-goals**
 
 - Preprocessing or programming capabilities (should be done by a separate tool)
 - Bracketless syntax
-
 
 ## License
 
