@@ -7,6 +7,19 @@ It's just like XML, but without the closing tags :)
 
 Nothing new to learn, just write and edit XML and HTML quicker, even with a simple editor!
 
+```html
+<html lang="en">
+    <head>
+        <title>Hello
+    <body>
+        <h1>Hello, world!
+        <p>
+            Lorem ipsum
+            dolor sit.
+        <ul>
+            <li><a href="/lorem">Lorem
+            <li><a href="/ipsum">Ipsum
+```
 
 ## Features
 
