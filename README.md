@@ -1,4 +1,4 @@
-<img src="/assets/logo.png?raw=true" align="right" height=40>
+<img src="/assets/logo.png?raw=true" align="right">
 
 # Xlite
 
